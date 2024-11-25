@@ -3,14 +3,17 @@
 A new Flutter project.
 
 ## Getting Started
+This project is amed to serve clients when they comes to our place to take their rest and spent anice time.
+# presenting
+Many products and services will be presenting to a customer, 
+customer can search for his favor (drink,sweets,coffie..ect that the Place offer)
+.......  can choice his favare and press on the prouduct to see  and add more details to proudct if he want.
+.......  can add the product to his favorate list.
+.......  ... ... to his own cart.
+.......  ... see his own profile.
+.......  ... determine his location using (amap).
 
-This project is a starting point for a Flutter application.
+## delivary
+.......  ... make acall for order online.
+.......  ... trake his order.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
