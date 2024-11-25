@@ -8,4 +8,7 @@ class EndPoint {
 class ApiKey {
   static String statusCode = '';
   static String errorMessage = '';
+    static String token = '';
+
+
 }
