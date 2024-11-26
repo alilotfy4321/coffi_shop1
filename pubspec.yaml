@@ -39,6 +39,7 @@ dependencies:
   geocoding: null
   geolocator: null
   google_maps_flutter: null
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   flutter_lints: ^3.0.0
