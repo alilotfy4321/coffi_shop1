@@ -4,11 +4,13 @@ import 'package:coffi_shop/core/api/api_comsumer.dart';
 import 'package:coffi_shop/core/api/endPoints.dart';
 import 'package:coffi_shop/core/errors/error_model.dart';
 import 'package:coffi_shop/core/errors/exeptions.dart';
+import 'package:coffi_shop/localCache/charedPreference.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/model/signInModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../view/dash_board/cardScreen/card_screen.dart';
 import '../view/dash_board/favoriteScreen/favorite.dart';
@@ -45,6 +47,8 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
       user = SignInModel.fromJson(response);
       decodedToken = JwtDecoder.decode(user!.token);
       decodedTokenId = decodedToken['id'];
+      SharedPreferencesHelper.saveSharedPrefData(key:'token',value: decodedToken);
+      SharedPreferencesHelper.saveSharedPrefData(key:'token',value: decodedTokenId);
       emit(SignInSuccsessState());
     } on ServerExeptions catch (e) {
       emit(SignInErrorState(e.errorModel.errorMessage));
