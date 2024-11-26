@@ -1,9 +1,14 @@
-// ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names, prefer_typing_uninitialized_variables, body_might_complete_normally_nullable, prefer_const_constructors
+// ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names, prefer_typing_uninitialized_variables, body_might_complete_normally_nullable, prefer_const_constructors, curly_braces_in_flow_control_structures
 
 import 'package:coffi_shop/core/api/api_comsumer.dart';
+import 'package:coffi_shop/core/api/endPoints.dart';
+import 'package:coffi_shop/core/errors/error_model.dart';
+import 'package:coffi_shop/core/errors/exeptions.dart';
 import 'package:coffi_shop/model/gridModel.dart';
+import 'package:coffi_shop/model/signInModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../view/dash_board/cardScreen/card_screen.dart';
 import '../view/dash_board/favoriteScreen/favorite.dart';
@@ -18,26 +23,46 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   static CoffieShopCubit get(context) => BlocProvider.of(context);
 //-------------------clean code_--------
   final ApiConsumer api;
-//------------------------------------
-  static final registerFormKey = GlobalKey<FormState>();
+//----------------------------------signIn data------
   static final loginFormKey = GlobalKey<FormState>();
+  final TextEditingController signInUserName = TextEditingController();
+  final TextEditingController signInPassword = TextEditingController();
 
-  navigateToSignIn(context) {
-    Navigator.pushNamed(context, 'signIn');
-  }
-
-  navigateToSignUp(context) {
-    Navigator.pushNamed(context, 'signUp');
-  }
-
-  //---------------test login
-  Future<bool> checkLoginValidData(var userName, var password) async {
-    if ('ali lotfy' == userName && '123' == password) {
-      emit(CoffieShopSignInState());
-      return true;
+  SignInModel? user;
+  var decodedToken;
+  var decodedTokenId; //used to know that you signed in and also sent with getData like apiKey
+  signIn() async {
+    try {
+      emit(SignInLoadingState());
+      final response = await api.post(
+        EndPoint.baseUrl,
+        data: {
+          ApiKeys.signInUserName: signInUserName.text,
+          ApiKeys.signInPassword: signInPassword.text,
+        },
+        isFormData: false,
+      );
+      user = SignInModel.fromJson(response);
+      decodedToken = JwtDecoder.decode(user!.token);
+      decodedTokenId = decodedToken['id'];
+      emit(SignInSuccsessState());
+    } on ServerExeptions catch (e) {
+      emit(SignInErrorState(e.errorModel.errorMessage));
     }
-    emit(CoffieShopSignInState());
-    return false;
+  }
+
+//----------------------------signUp data--------------
+  static final registerFormKey = GlobalKey<FormState>();
+  TextEditingController signUpUserName = TextEditingController();
+  TextEditingController signUPEmail = TextEditingController();
+  TextEditingController signUpPhone = TextEditingController();
+
+  //---------------test login------
+  bool checkLoginValidData(var userName, var password) {
+    if ('ali lotfy' == userName && '123' == password)
+      return true;
+    else
+      return false;
   }
 
   //-----------------------------bottom nav bar-----

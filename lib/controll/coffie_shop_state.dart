@@ -7,34 +7,48 @@ abstract class CoffieShopStates {}
 
 class CoffieShopInitialState extends CoffieShopStates {}
 
-class CoffieShopErrorState extends CoffieShopStates {
+
+//----------------------------------------------------  sign in----
+class SignInLoadingState extends CoffieShopStates {}
+
+class SignInSuccsessState extends CoffieShopStates {}
+
+class SignInErrorState extends CoffieShopStates {
   final error;
-  CoffieShopErrorState(this.error);
+  SignInErrorState(this.error);
 }
+//-------------------------------------- sign up ----
 
-//---------------------------------------------------- go to page sign in-up---
-class CoffieShopSignInState extends CoffieShopStates {}
+class SignUpLoadingState extends CoffieShopStates {}
 
-class CoffieShopSignUpState extends CoffieShopStates {}
-//--------------------------------------when user sign in - up ----
+class SignUpSuccsessState extends CoffieShopStates {}
 
-class CoffieShopSignedInState extends CoffieShopStates {}
-
-class CoffieShopSignedUpState extends CoffieShopStates {}
+class SignUPErrorState extends CoffieShopStates {
+    final error;
+  SignUPErrorState(this.error);
+}
 
 //----------------------------------bottomNaveBar-----------
 class BottomNavBarchangeIndexState extends CoffieShopStates {}
 
 //------------------------------------------category items
 class ChangeItemColorState extends CoffieShopStates {}
+
 //----------------------------------grid home page states
 class ChoiceGridAppearingImageLoadingState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageCoffieState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageDessertState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageBreakfastState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageFreashJuiceState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageCroissantState extends CoffieShopStates {}
+
 class ChoiceGridAppearingImageState extends CoffieShopStates {}
+
 //------------------------------------------------Location permesion---
 class AskLocationPermissinState extends CoffieShopStates {}
 

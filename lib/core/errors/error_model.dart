@@ -10,6 +10,6 @@ class ErrorModel {
   ErrorModel({required this.status, required this.errorMessage});
   factory ErrorModel.fromJson(Map<String, dynamic> jsonData) {
     //------- ststus and ErrorMessage  ---must equal in api parameters
-    return ErrorModel(status: jsonData[ApiKey.statusCode], errorMessage: jsonData[ApiKey.errorMessage]);
+    return ErrorModel(status: jsonData[ApiKeys.statusCode], errorMessage: jsonData[ApiKeys.errorMessage]);
   }
 }

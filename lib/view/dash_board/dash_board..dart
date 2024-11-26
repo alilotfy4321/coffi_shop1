@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, unused_import
 
-import 'package:coffi_shop/constants/navigation.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/view/dash_board/bottomNavBar.dart';
 import 'package:coffi_shop/view/dash_board/cardScreen/card_screen.dart';
@@ -12,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../controll/coffie_shop_cubit.dart';
+import '../../customWidgets/navigation.dart';
 
 class DashBoard extends StatelessWidget {
 

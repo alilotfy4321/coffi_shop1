@@ -5,10 +5,15 @@ class EndPoint {
 
 //----------the words that reapeted more than one--....
 // status code, errorMessage ...ect
-class ApiKey {
-  static String statusCode = '';
-  static String errorMessage = '';
-    static String token = '';
+class ApiKeys {
+  static String signInUserName = 'userName';
+  static String signInPassword = 'Password';
+  static String signUpUserName = 'signUpUserName';
+  static String signUpEmail = 'signUpEmail';
+  static String signUpPhone = 'signUpPhone';
+  static String statusCode = 'statusCode';
+  static String errorMessage = 'errorMessage';
+    // static String token = 'token';
 
 
 }
