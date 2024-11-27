@@ -1,11 +1,13 @@
-// ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names, prefer_typing_uninitialized_variables, body_might_complete_normally_nullable, prefer_const_constructors, curly_braces_in_flow_control_structures
+// ignore_for_file: avoid_print, unused_local_variable, non_constant_identifier_names, prefer_typing_uninitialized_variables, body_might_complete_normally_nullable, prefer_const_constructors, curly_braces_in_flow_control_structures, unnecessary_brace_in_string_interps
 
 import 'package:coffi_shop/core/api/api_comsumer.dart';
 import 'package:coffi_shop/core/api/endPoints.dart';
 import 'package:coffi_shop/core/errors/exeptions.dart';
+import 'package:coffi_shop/core/functions/upload_image_to_api.dart';
 import 'package:coffi_shop/localCache/charedPreference.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/model/signInModel.dart';
+import 'package:coffi_shop/model/signUpModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,7 +38,7 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
     try {
       emit(SignInLoadingState());
       final response = await api.post(
-        EndPoint.baseUrl,
+        EndPoint.signIn,
         data: {
           ApiKeys.signInUserName: signInUserName.text,
           ApiKeys.signInPassword: signInPassword.text,
@@ -61,11 +63,36 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   TextEditingController signUpUserName = TextEditingController();
   TextEditingController signUPEmail = TextEditingController();
   TextEditingController signUpPhone = TextEditingController();
+  TextEditingController signUpPassword = TextEditingController();
   //----
   XFile? profilePic;
   uploadProfilePic(XFile image) {
     profilePic = image;
     emit(UploadProfilePicState());
+  }
+
+  signUp() async {
+    try {
+      emit(SignUpLoadingState());
+      final response = await api.post(
+        EndPoint.signUp,
+        data: {
+          ApiKeys.signUpUserName: signUpUserName.text,
+          ApiKeys.signUpEmail: signUPEmail.text,
+          ApiKeys.signUpPhone: signUpPhone.text,
+          ApiKeys.signUpPassword: signUpPassword.text,
+          //-------send location
+          ApiKeys.location:
+              '${currentLocation}+${currentLatitude}+${currentLngitude}',
+          ApiKeys.profilePic: await uploadImageToApi(profilePic!),
+        },
+        isFormData: true,
+      );
+    final  signUpModel = SignUpModel.fromJson(response);
+      emit(SignUpSuccsessState(signUpModel.message));
+    } on ServerExeptions catch (e) {
+      emit(SignUPErrorState(e.errorModel.errorMessage));
+    }
   }
 
   //---------------test login------

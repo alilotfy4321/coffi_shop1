@@ -7,12 +7,10 @@ abstract class CoffieShopStates {}
 
 class CoffieShopInitialState extends CoffieShopStates {}
 
-
 //----------------------------------------------------  sign in----
 class SignInLoadingState extends CoffieShopStates {}
 
 class SignInSuccsessState extends CoffieShopStates {}
-
 
 class SignInErrorState extends CoffieShopStates {
   final error;
@@ -22,12 +20,16 @@ class SignInErrorState extends CoffieShopStates {
 
 class SignUpLoadingState extends CoffieShopStates {}
 
-class SignUpSuccsessState extends CoffieShopStates {}
+class SignUpSuccsessState extends CoffieShopStates {
+  String message;
+  SignUpSuccsessState(this.message);
+}
 
 class SignUPErrorState extends CoffieShopStates {
-    final error;
+  final error;
   SignUPErrorState(this.error);
 }
+
 class UploadProfilePicState extends CoffieShopStates {}
 
 //----------------------------------bottomNaveBar-----------
