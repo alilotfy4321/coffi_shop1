@@ -83,7 +83,7 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
           ApiKeys.signUpPassword: signUpPassword.text,
           //-------send location
           ApiKeys.location:
-              '${currentLocation}+${currentLatitude}+${currentLngitude}',
+              '${currentLocation},${currentLatitude},${currentLngitude}',
           ApiKeys.profilePic: await uploadImageToApi(profilePic!),
         },
         isFormData: true,
