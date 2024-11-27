@@ -13,6 +13,7 @@ class SignInLoadingState extends CoffieShopStates {}
 
 class SignInSuccsessState extends CoffieShopStates {}
 
+
 class SignInErrorState extends CoffieShopStates {
   final error;
   SignInErrorState(this.error);
@@ -27,6 +28,7 @@ class SignUPErrorState extends CoffieShopStates {
     final error;
   SignUPErrorState(this.error);
 }
+class UploadProfilePicState extends CoffieShopStates {}
 
 //----------------------------------bottomNaveBar-----------
 class BottomNavBarchangeIndexState extends CoffieShopStates {}

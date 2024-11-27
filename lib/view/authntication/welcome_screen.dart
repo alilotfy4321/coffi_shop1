@@ -3,6 +3,9 @@
 import 'package:coffi_shop/constants/app_dimentions.dart';
 import 'package:coffi_shop/controll/coffie_shop_cubit.dart';
 import 'package:coffi_shop/customWidgets/custome_button.dart';
+import 'package:coffi_shop/customWidgets/navigation.dart';
+import 'package:coffi_shop/view/authntication/login_module/login_screen.dart';
+import 'package:coffi_shop/view/authntication/register_module/register_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,13 +67,13 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   AppDimentions.vSpace(200),
                   CustomButton(function: () {
-                    cubit.navigateToSignIn(context);
+                    navigateTo(context,LoginScreen());
                   }),
                   AppDimentions.vSpace(50),
                   CustomButton(
                     text: 'Sign Up',
                     backgroundColor: Color.fromARGB(255, 187, 132, 132),
-                    function: () => cubit.navigateToSignUp(context),
+                    function: () => navigateTo(context,RegisterScreen()),
                   ),
                 ],
               ),

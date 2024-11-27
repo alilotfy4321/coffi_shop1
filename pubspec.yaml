@@ -28,20 +28,21 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter:
+    sdk: flutter
   animated_splash_screen: null
   cupertino_icons: ^1.0.6
   dio: ^5.7.0
-  flutter:
-    sdk: flutter
+  
   flutter_bloc: ^8.1.6
   fluttertoast: ^8.2.6
   font_awesome_flutter: ^10.7.0
   geocoding: null
   geolocator: null
   google_maps_flutter: null
+  image_picker: ^1.1.2
   jwt_decoder: ^2.0.1
   shared_preferences: ^2.3.3
-
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

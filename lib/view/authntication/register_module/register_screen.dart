@@ -1,7 +1,9 @@
 //-----------// ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, must_be_immutable
 
-// ignore_for_file: prefer_const_constructors, must_be_immutable, sort_child_properties_last, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, must_be_immutable, sort_child_properties_last, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
+import 'package:coffi_shop/customWidgets/hvSpaces.dart';
+import 'package:coffi_shop/view/authntication/register_module/picProfilePicwidget.dart';
 import 'package:coffi_shop/view/authntication/register_module/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +60,13 @@ class RegisterScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(50.0),
                     child: SingleChildScrollView(
-                      child: RegisterForm(),
+                      child: Column(
+                        children: [
+                          PicprofilePicWidget(),
+                          vSpace(15),
+                          RegisterForm(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
