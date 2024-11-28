@@ -13,8 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-import '../view/dash_board/cardScreen/card_screen.dart';
-import '../view/dash_board/favoriteScreen/favorite.dart';
+import '../view/dash_board/cart_screen/cart_screen.dart';
+import '../view/dash_board/favoriteScreen/favorite_screen.dart';
 import '../view/dash_board/homeScreen/home.dart';
 import '../view/dash_board/profileScreen/profile_screen.dart';
 
@@ -26,6 +26,13 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   static CoffieShopCubit get(context) => BlocProvider.of(context);
 //-------------------clean code_--------
   final ApiConsumer api;
+//---------appBar titles---
+  List<String> appBarTitles = [
+    'DashBoard',
+    'Favorate',
+    'Cart',
+    'profile',
+  ];
 //----------------------------------signIn data------
   static final loginFormKey = GlobalKey<FormState>();
   final TextEditingController signInUserName = TextEditingController();
@@ -88,7 +95,7 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
         },
         isFormData: true,
       );
-    final  signUpModel = SignUpModel.fromJson(response);
+      final signUpModel = SignUpModel.fromJson(response);
       emit(SignUpSuccsessState(signUpModel.message));
     } on ServerExeptions catch (e) {
       emit(SignUPErrorState(e.errorModel.errorMessage));
@@ -299,5 +306,18 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
     }
     emit(ChoiceSweetTypeState());
   }
-  //---
+
+  //--------------favorite--
+  List<Widget> favorateList = [];
+  removeFavoriteListItem(int index) {
+    favorateList.removeAt(index);
+    emit(RemoveFavoriteItemState());
+  }
+
+  //--------------cart-----
+    List<Widget> cartList = [];
+  removeListItem(int index) {
+    cartList.removeAt(index);
+    emit(RemoveFavoriteItemState());
+  }
 }

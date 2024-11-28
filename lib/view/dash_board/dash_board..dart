@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, unused_import, unnecessary_string_interpolations
 
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/view/dash_board/bottomNavBar.dart';
-import 'package:coffi_shop/view/dash_board/cardScreen/card_screen.dart';
-import 'package:coffi_shop/view/dash_board/favoriteScreen/favorite.dart';
+import 'package:coffi_shop/view/dash_board/cart_screen/cart_screen.dart';
+import 'package:coffi_shop/view/dash_board/favoriteScreen/favorite_screen.dart';
 import 'package:coffi_shop/view/dash_board/homeScreen/home.dart';
 import 'package:coffi_shop/view/dash_board/profileScreen/profile_screen.dart';
 import 'package:coffi_shop/view/maps/MapLocation.dart';
@@ -14,13 +14,16 @@ import '../../controll/coffie_shop_cubit.dart';
 import '../../customWidgets/navigation.dart';
 
 class DashBoard extends StatelessWidget {
-
-const DashBoard({super.key});
-
-  
+  const DashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> appBarTitles = [
+      'DashBoard',
+      'Favorate',
+      'Cart',
+      'profile',
+    ];
     return BlocBuilder<CoffieShopCubit, CoffieShopStates>(
       builder: (context, state) {
         var cubit = CoffieShopCubit.get(context);
@@ -36,7 +39,7 @@ const DashBoard({super.key});
                 Icons.location_pin,
               ),
             ),
-            title: Text('dashBoard '),
+            title: Text('${appBarTitles[cubit.currentIndex]}'),
             actions: [
               IconButton(
                 onPressed: () {},

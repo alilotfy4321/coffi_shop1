@@ -2,6 +2,8 @@
 
 import 'package:coffi_shop/constants/app_dimentions.dart';
 import 'package:coffi_shop/controll/coffie_shop_cubit.dart';
+import 'package:coffi_shop/customWidgets/customFavorateWidget.dart';
+import 'package:coffi_shop/customWidgets/custom_cart_widget.dart';
 import 'package:coffi_shop/customWidgets/navigation.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/view/dash_board/homeScreen/selectedDrinkUsingStack.dart';
@@ -10,18 +12,15 @@ import 'package:flutter/material.dart';
 class CustomParentGrid extends StatelessWidget {
   final CoffieShopCubit cubit;
   final int categoryIndex;
-  final List <GridModelProuduct> categoryGridProduct;
-  const CustomParentGrid(
-    this.cubit, 
-    this.categoryIndex, 
-    this.categoryGridProduct,
+  final List<GridModelProuduct> model;
+  const CustomParentGrid(this.cubit, this.categoryIndex, this.model,
       {super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       scrollDirection: Axis.vertical,
-      itemCount: categoryGridProduct.length,
+      itemCount: model.length,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -31,9 +30,10 @@ class CustomParentGrid extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         //-------------  one product usind index---
-        GridModelProuduct selectedProuductList = categoryGridProduct[index];
+        GridModelProuduct selectedProuductList = model[index];
+
         //---------------
-        if (selectedProuductList==null) {
+        if (selectedProuductList == null) {
           return CircularProgressIndicator();
         } else {
           return InkWell(
@@ -76,7 +76,13 @@ class CustomParentGrid extends StatelessWidget {
                           top: 0,
                           right: 2,
                           child: IconButton(
-                            onPressed: () {},
+                            //-------add new item to favorate list
+                            onPressed: () {
+                              cubit.favorateList.add(CustomFavorateWidget(
+                                  model: selectedProuductList,
+                                  cubit: cubit,
+                                  index: index));
+                            },
                             icon: Icon(
                               Icons.favorite_border,
                               color: Colors.white,
@@ -104,7 +110,12 @@ class CustomParentGrid extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              cubit.cartList.add(CustomCartWidget(
+                                  model: selectedProuductList,
+                                  cubit: cubit,
+                                  index: index));
+                            },
                             icon: Icon(
                               Icons.add,
                               size: 20,

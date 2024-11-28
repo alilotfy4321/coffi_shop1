@@ -71,5 +71,8 @@ class IncrementSweetsOverDrink extends CoffieShopStates {}
 class DecrementSweetsOverDrink extends CoffieShopStates {}
 
 class ChoiceSweetTypeState extends CoffieShopStates {}
-//---------------------
+//---------------------favorate screen
+class RemoveFavoriteItemState extends CoffieShopStates {}
+//-------------------cart screen
+class RemoveCartItemState extends CoffieShopStates {}
 
