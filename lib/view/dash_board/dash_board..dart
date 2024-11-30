@@ -42,7 +42,21 @@ class DashBoard extends StatelessWidget {
             title: Text('${appBarTitles[cubit.currentIndex]}'),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return  AlertDialog(
+                          title:  Text("Order fast delevery "),
+                          content:  Row(
+                            children: [
+                              TextButton(onPressed: (){}, child: Text('Order'),),
+                              Text("+201554534204"),
+                            ],
+                          ),
+                        );
+                      },);
+                },
                 icon: Icon(
                   Icons.phone,
                 ),
