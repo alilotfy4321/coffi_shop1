@@ -6,8 +6,8 @@ import 'package:coffi_shop/view/dash_board/cart_screen/payment_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CardScreen extends StatelessWidget {
-  const CardScreen({super.key});
+class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CardScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Total Price = 20 \$',
+                    'Total Price = ${cubit.TotalProductsPrice}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -44,7 +44,7 @@ class CardScreen extends StatelessWidget {
                   Spacer(),
                   TextButton(
                       onPressed: () {
-                        navigateTo(context, PaymentScreen(price: 20.0));
+                        navigateTo(context, PaymentScreen());
                       },
                       child: Text(
                         'Pay',

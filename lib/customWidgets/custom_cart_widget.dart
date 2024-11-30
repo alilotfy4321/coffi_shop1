@@ -8,12 +8,12 @@ import 'package:coffi_shop/customWidgets/hvSpaces.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class CustomCartWidget extends StatelessWidget {
   final GridModelProuduct model;
   final CoffieShopCubit cubit;
   int index;
-  CustomCartWidget( {super.key, 
+  CustomCartWidget({
+    super.key,
     required this.model,
     required this.cubit,
     required this.index,
@@ -59,8 +59,6 @@ class CustomCartWidget extends StatelessWidget {
                     Text('${model.name}'),
                     vSpace(5),
                     Text('${model.price} \$'),
-                    
-                    
                   ],
                 ),
                 Spacer(),
@@ -84,7 +82,8 @@ class CustomCartWidget extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          cubit.removeListItem(index);
+                          
+                          cubit.removeCartListItem(index,model.price);
                         },
                         child: const Text('remove')),
                   ],
@@ -95,6 +94,5 @@ class CustomCartWidget extends StatelessWidget {
         );
       },
     );
-    
   }
 }

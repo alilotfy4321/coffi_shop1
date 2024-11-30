@@ -122,7 +122,7 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   List<Widget> screens = [
     HomeScreen(),
     FavoriteScreen(),
-    CardScreen(),
+    CartScreen(),
     ProfileScreen(),
   ];
 
@@ -309,15 +309,36 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
 
   //--------------favorite--
   List<Widget> favorateList = [];
-  removeFavoriteListItem(int index) {
+  void removeFavoriteListItem(int index) {
     favorateList.removeAt(index);
-    emit(RemoveFavoriteItemState());
+
+    emit(RemoveFavoriteItemState()); // Notify the UI
+  }
+
+  int favorGridIndex = 0;
+  changeHeartFavorColor(index) {
+    // to change heart favor color
+    favorGridIndex = index;
+    emit(ChangeFavorHeartColorState());
   }
 
   //--------------cart-----
-    List<Widget> cartList = [];
-  removeListItem(int index) {
+
+  List<Widget> cartList = [];
+
+//total price---
+  double TotalProductsPrice = 0.0;
+  calcTotalPrice(double newAddPrice) {
+    TotalProductsPrice += newAddPrice;
+    emit(calculateTotalPriceState());
+  }
+
+  removeCartListItem(int index, double price) {
+    if(index<=cartList.length){
     cartList.removeAt(index);
-    emit(RemoveFavoriteItemState());
+    TotalProductsPrice = TotalProductsPrice-price;
+    }
+        emit(RemoveCartItemState());
+    
   }
 }

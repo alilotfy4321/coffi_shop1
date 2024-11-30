@@ -13,7 +13,7 @@ class CustomFavorateWidget extends StatelessWidget {
   final GridModelProuduct model;
   final CoffieShopCubit cubit;
   int index;
-  CustomFavorateWidget( {super.key, 
+  CustomFavorateWidget( {super.key,  
     required this.model,
     required this.cubit,
     required this.index,
@@ -87,7 +87,7 @@ class CustomFavorateWidget extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          cubit.removeListItem(index);
+                          cubit.removeFavoriteListItem(index);
                         },
                         child: const Text('remove')),
                   ],
@@ -98,6 +98,6 @@ class CustomFavorateWidget extends StatelessWidget {
         );
       },
     );
-    ;
+    
   }
 }

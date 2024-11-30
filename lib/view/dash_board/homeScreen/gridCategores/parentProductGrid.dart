@@ -2,8 +2,8 @@
 
 import 'package:coffi_shop/constants/app_dimentions.dart';
 import 'package:coffi_shop/controll/coffie_shop_cubit.dart';
-import 'package:coffi_shop/customWidgets/customFavorateWidget.dart';
 import 'package:coffi_shop/customWidgets/custom_cart_widget.dart';
+import 'package:coffi_shop/customWidgets/custom_favorate_widget.dart';
 import 'package:coffi_shop/customWidgets/navigation.dart';
 import 'package:coffi_shop/model/gridModel.dart';
 import 'package:coffi_shop/view/dash_board/homeScreen/selectedDrinkUsingStack.dart';
@@ -78,14 +78,19 @@ class CustomParentGrid extends StatelessWidget {
                           child: IconButton(
                             //-------add new item to favorate list
                             onPressed: () {
+                              //add favor item to list
                               cubit.favorateList.add(CustomFavorateWidget(
                                   model: selectedProuductList,
                                   cubit: cubit,
                                   index: index));
+                              //change heart color
+                              cubit.changeHeartFavorColor(index);
                             },
                             icon: Icon(
-                              Icons.favorite_border,
-                              color: Colors.white,
+                              Icons.favorite,
+                              color: (cubit.favorGridIndex == index)
+                                  ? Colors.red
+                                  : Colors.white,
                             ),
                           ),
                         ),
@@ -111,10 +116,12 @@ class CustomParentGrid extends StatelessWidget {
                           ),
                           child: IconButton(
                             onPressed: () {
+                              //--------add cart widget
                               cubit.cartList.add(CustomCartWidget(
                                   model: selectedProuductList,
                                   cubit: cubit,
                                   index: index));
+                              cubit.calcTotalPrice(selectedProuductList.price);
                             },
                             icon: Icon(
                               Icons.add,
