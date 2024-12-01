@@ -40,7 +40,7 @@ class ShowMap extends StatelessWidget {
         List<Placemark> placemarks =
             await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
         cubit.getCurrentLocation(
-            latLng.latitude, latLng.longitude, placemarks[0].street);
+            latLng.latitude, latLng.longitude, placemarks[0].street!);
         
       },
       markers: markrs.toSet(),

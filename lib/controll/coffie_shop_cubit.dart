@@ -67,6 +67,7 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   }
 
 //----------------------------signUp data--------------
+  static final registerFormKey = GlobalKey<FormState>();
   TextEditingController signUpUserName = TextEditingController();
   TextEditingController signUPEmail = TextEditingController();
   TextEditingController signUpPhone = TextEditingController();
