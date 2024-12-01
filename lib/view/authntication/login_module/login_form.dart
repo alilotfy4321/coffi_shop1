@@ -42,7 +42,7 @@ class LoginForm extends StatelessWidget {
               CustomButton(
                 function: () {
                   if (CoffieShopCubit.loginFormKey.currentState!.validate()) {
-                    navigateTo(context, DashBoard());
+                    navigateAndFinishTo(context, DashBoard());
                   }
                 },
               ),

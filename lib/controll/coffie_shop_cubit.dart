@@ -17,6 +17,7 @@ import '../view/dash_board/cart_screen/cart_screen.dart';
 import '../view/dash_board/favoriteScreen/favorite_screen.dart';
 import '../view/dash_board/homeScreen/home.dart';
 import '../view/dash_board/profileScreen/profile_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'coffie_shop_state.dart';
 
@@ -334,11 +335,21 @@ class CoffieShopCubit extends Cubit<CoffieShopStates> {
   }
 
   removeCartListItem(int index, double price) {
-    if(index<=cartList.length){
-    cartList.removeAt(index);
-    TotalProductsPrice = TotalProductsPrice-price;
+    if (index <= cartList.length) {
+      cartList.removeAt(index);
+      TotalProductsPrice = TotalProductsPrice - price;
     }
-        emit(RemoveCartItemState());
-    
+    emit(RemoveCartItemState());
+  }
+
+  //--------luncher call
+  Future<void> makePhoneCall() async {
+    final Uri phoneUri = Uri(scheme: 'tel', path:'+201020607051' );
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    } else {
+      throw 'Could not launch ';
+    }
+    emit(MakePhoneCallState());
   }
 }

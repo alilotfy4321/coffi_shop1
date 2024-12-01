@@ -44,18 +44,24 @@ class DashBoard extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return  AlertDialog(
-                          title:  Text("Order fast delevery "),
-                          content:  Row(
-                            children: [
-                              TextButton(onPressed: (){}, child: Text('Order'),),
-                              Text("+201554534204"),
-                            ],
-                          ),
-                        );
-                      },);
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Order fast delevery "),
+                        content: Row(
+                          children: [
+                            TextButton(
+                              onPressed: () async{
+                              await  cubit.makePhoneCall();
+                              },
+                              child: Text('Order'),
+                            ),
+                            Text("+201020607051"),
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 },
                 icon: Icon(
                   Icons.phone,

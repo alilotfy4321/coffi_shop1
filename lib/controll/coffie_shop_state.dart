@@ -77,4 +77,7 @@ class ChangeFavorHeartColorState extends CoffieShopStates {}
 //-------------------cart screen
 class RemoveCartItemState extends CoffieShopStates {}
 class calculateTotalPriceState extends CoffieShopStates {}
+//------------------------make phone call
+class MakePhoneCallState extends CoffieShopStates {}
+
 

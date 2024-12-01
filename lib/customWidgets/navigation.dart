@@ -7,3 +7,12 @@ void navigateTo(context, Widget widget) {
     ),
   );
 }
+
+void navigateAndFinishTo(context, Widget widget) {
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(
+      builder: (context) => widget,
+    ),
+    
+  );
+}
