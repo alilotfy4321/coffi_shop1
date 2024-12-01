@@ -18,11 +18,12 @@ class RegisterForm extends StatelessWidget {
   Widget build(BuildContext context) {
 //-----------------get cubit instance -----------------------
     var cubit = CoffieShopCubit.get(context);
+    final  registerFormKey = GlobalKey<FormState>();
     //---------------------------------------------------------------
     return BlocBuilder<CoffieShopCubit, CoffieShopStates>(
       builder: (context, state) {
         return Form(
-          key: CoffieShopCubit.registerFormKey,
+          key: registerFormKey,
           child: Column(
             children: [
               CustomTextFormField(
@@ -46,7 +47,7 @@ class RegisterForm extends StatelessWidget {
               CustomButton(
                   text: 'Sign UP',
                   function: () {
-                    if (CoffieShopCubit.registerFormKey.currentState!
+                    if (registerFormKey.currentState!
                         .validate()) {
                       navigateTo(context, LoginScreen());
                     }

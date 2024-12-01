@@ -19,11 +19,13 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     //-----------------get cubit instance -----------------------
     var cubit = CoffieShopCubit.get(context);
+      final loginFormKey = GlobalKey<FormState>();
+
    //---------------------------------------------------------------
     return BlocBuilder<CoffieShopCubit, CoffieShopStates>(
       builder: (context, state) {
         return Form(
-          key: CoffieShopCubit.loginFormKey,
+          key: loginFormKey,
           child: Column(
             children: [
               CustomTextFormField(
@@ -41,7 +43,7 @@ class LoginForm extends StatelessWidget {
               AppDimentions.vSpace(40),
               CustomButton(
                 function: () {
-                  if (CoffieShopCubit.loginFormKey.currentState!.validate()) {
+                  if (loginFormKey.currentState!.validate()) {
                     navigateAndFinishTo(context, DashBoard());
                   }
                 },
