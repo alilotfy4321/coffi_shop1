@@ -17,3 +17,6 @@ customer can search for his favor (drink,sweets,coffie..ect that the Place offer
 .......  ... make acall for order online.
 .......  ... trake his order.
 
+![Screenshot_2024-12-01-17-49-19-788_com example coffi_shop1](https://github.com/user-attachments/assets/b54ad4d9-81d5-4580-8ea3-48532e16ce90)
+
+
