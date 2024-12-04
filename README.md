@@ -27,6 +27,8 @@ Welcome  We aim to create a warm and welcoming environment where you can enjoy y
 <img src='https://github.com/user-attachments/assets/a453a7a6-7006-4b8e-92b2-0a9d6769a85d' style='height: 300px; width: auto;  '>
 <img src='https://github.com/user-attachments/assets/f03c7966-e37e-441f-a608-8caaff76f8dc' style='height: 300px; width: auto;  '>
 <img src='https://github.com/user-attachments/assets/a59c1b67-dc64-405a-84a2-f8e2b838edc2' style='height: 300px; width: auto;  '>
+<img src='https://github.com/user-attachments/assets/a59c1b67-dc64-405a-84a2-f8e2b838edc2' style='height: 300px; width: auto;  '>
+<img src='https://github.com/user-attachments/assets/75b7f268-95fd-4636-aa47-77f65dcda995' style='height: 300px; width: auto;  '>
 <img src='https://github.com/user-attachments/assets/08fd0fef-0dbf-4515-ae37-43c7863aee8d' style='height: 300px; width: auto;  '>
 <img src='https://github.com/user-attachments/assets/161e680a-202f-48b8-841a-3c8e2910e353' style='height: 300px; width: auto;  '>
 <img src='https://github.com/user-attachments/assets/66e3cd51-d330-425f-b3ae-8c3066af0810' style='height: 300px; width: auto;  '>
