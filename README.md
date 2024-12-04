@@ -3,7 +3,15 @@
 MyApp is a cross-platform app built with Flutter. It offers a seamless experience across Android and iOS platforms with a clean UI and robust features.
 
 ## Features
-
+Welcome  We aim to create a warm and welcoming environment where you can enjoy your favorite beverages and treats. Here's what makes us unique:
+-user will (singup,sing in)and chooice profile photo.
+-Home screen : present user favorate consists of list of categories which contain drinks,and some snaks and fast food (break fast,corassont).
+-user can press any prouduct to see and add more details for prouduct.
+-user can  save his favor item to favor list.
+-user can  add item to cart .
+-user can  order online .
+-user can determine his location from the map.
+-user can track his order.
 
 
 ## Screen Shots for project
